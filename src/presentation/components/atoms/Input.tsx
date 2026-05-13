@@ -42,7 +42,7 @@ export const Input: React.FC<InputProps> = ({
           ${isFocused ? 'border-brand-primary' : error ? 'border-brand-danger' : isDark ? 'border-brand-darkSurface bg-brand-darkSurface' : 'border-slate-200 bg-white'}
         `}
       >
-        {iconLeft && <View className="mr-3">{iconLeft}</View>}
+        {iconLeft && <View className="mr-3 h-6 items-center justify-center">{iconLeft}</View>}
         
         <TextInput
           className={`flex-1 text-base font-normal p-0
@@ -51,12 +51,12 @@ export const Input: React.FC<InputProps> = ({
           placeholderTextColor={isDark ? '#64748B' : '#94A3B8'}
           onFocus={() => setIsFocused(true)}
           onBlur={() => setIsFocused(false)}
-          style={style}
+          style={[{ height: 24, paddingVertical: 0, textAlignVertical: 'center', includeFontPadding: false }, style]}
           {...props}
         />
-
+ 
         {iconRight && (
-          <TouchableOpacity onPress={onPressIconRight} disabled={!onPressIconRight} className="ml-3">
+          <TouchableOpacity onPress={onPressIconRight} disabled={!onPressIconRight} className="ml-3 h-6 items-center justify-center">
             {iconRight}
           </TouchableOpacity>
         )}

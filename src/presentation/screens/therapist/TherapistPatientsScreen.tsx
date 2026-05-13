@@ -63,22 +63,57 @@ export const TherapistPatientsScreen: React.FC<{ navigation: any }> = ({ navigat
             data={filteredPatients}
             keyExtractor={(item) => item.id}
             showsVerticalScrollIndicator={false}
+            contentContainerStyle={{ gap: 20, paddingBottom: 24 }}
             renderItem={({ item }) => (
               <Card
-                onPress={() => handlePatientPress(item)}
-                className="mb-4 flex-row items-center justify-between p-4"
+                onPress={() => navigation.navigate('MedicalRecordEdit', {
+                  patientId: item.id,
+                  patientName: item.name,
+                })}
+                className="p-5 border-slate-200/60 dark:border-slate-800/80"
               >
-                <View className="flex-row items-center flex-1">
-                  <Avatar source={`https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=4F46E5&color=fff`} size="md" />
-                  <View className="pl-4 flex-1">
-                    <Typography variant="h3" className="text-base font-semibold">{item.name}</Typography>
-                    <Typography variant="caption" color="subtext" className="mt-0.5">
-                      Última sessão: {item.lastSession} • {item.totalSessions} atendimentos
+                {/* Linha Superior: Perfil Básico */}
+                <View className="flex-row items-center justify-between mb-4">
+                  <View className="flex-row items-center flex-1">
+                    <Avatar 
+                      source={`https://ui-avatars.com/api/?name=${encodeURIComponent(item.name)}&background=0D9488&color=fff`} 
+                      size="md" 
+                    />
+                    <View className="pl-4 flex-1">
+                      <Typography variant="h3" className="text-base font-bold">
+                        {item.name}
+                      </Typography>
+                      <Typography variant="caption" color="subtext" className="text-xs mt-0.5">
+                        {item.age} anos • ID: #{item.id.split('_').pop()?.toUpperCase()}
+                      </Typography>
+                    </View>
+                  </View>
+                  <ChevronRight color="#94A3B8" size={18} />
+                </View>
+
+                {/* Linha do Meio: Diagnóstico Ativo (CID) */}
+                <View className="bg-brand-primary/5 dark:bg-brand-primary/10 border border-brand-primary/10 dark:border-brand-primary/15 rounded-xl px-3.5 py-2.5 mb-4 flex-row items-center">
+                  <FileText color="#0D9488" size={16} />
+                  <Typography variant="captionBold" color="primary" className="ml-2.5 text-xs flex-1">
+                    CID: {item.diagnosis}
+                  </Typography>
+                </View>
+
+                {/* Linha de Baixo: Estatísticas Rápidas */}
+                <View className="flex-row justify-between items-center border-t border-slate-150/40 dark:border-slate-800/80 pt-4">
+                  <View className="flex-row items-center">
+                    <Calendar color="#94A3B8" size={14} />
+                    <Typography variant="caption" color="subtext" className="ml-2 text-xs">
+                      Última sessão: <Typography variant="captionBold" className="text-xs">{item.lastSession}</Typography>
+                    </Typography>
+                  </View>
+
+                  <View className="bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
+                    <Typography variant="captionBold" color="subtext" className="text-[11px] text-slate-500 dark:text-slate-400">
+                      {item.totalSessions} sessões
                     </Typography>
                   </View>
                 </View>
-                
-                <ChevronRight color="#94A3B8" size={18} />
               </Card>
             )}
           />
