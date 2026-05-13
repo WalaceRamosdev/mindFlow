@@ -35,8 +35,8 @@ export const RecoverPasswordScreen: React.FC<{ navigation: any }> = ({ navigatio
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-brand-darkBg px-6">
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+    <SafeAreaView className="flex-1 bg-brand-darkBg">
+      <ScrollView showsVerticalScrollIndicator={false} className="px-6" contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
         
         {/* Voltar */}
         <TouchableOpacity

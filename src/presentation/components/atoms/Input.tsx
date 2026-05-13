@@ -30,7 +30,7 @@ export const Input: React.FC<InputProps> = ({
   return (
     <View className={`w-full mb-5 ${className}`}>
       {label && (
-        <Text className={`text-xs font-semibold uppercase tracking-wider mb-2
+        <Text className={`text-xs font-semibold uppercase tracking-wider mb-2 text-center
           ${isDark ? 'text-brand-darkSubtext' : 'text-brand-lightSubtext'}
         `}>
           {label}
@@ -45,7 +45,7 @@ export const Input: React.FC<InputProps> = ({
         {iconLeft && <View className="mr-3">{iconLeft}</View>}
         
         <TextInput
-          className={`flex-1 text-base font-normal h-6 p-0
+          className={`flex-1 text-base font-normal p-0
             ${isDark ? 'text-brand-darkText' : 'text-brand-lightText'}
           `}
           placeholderTextColor={isDark ? '#64748B' : '#94A3B8'}

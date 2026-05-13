@@ -39,17 +39,22 @@ export const TherapistDashboardScreen: React.FC<{ navigation: any }> = ({ naviga
         </View>
 
         {/* Linha de Métricas Rápidas */}
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} className="mb-8 h-28">
+        <ScrollView 
+          horizontal 
+          showsHorizontalScrollIndicator={false} 
+          className="mb-8 h-28"
+          contentContainerStyle={{ gap: 16, justifyContent: 'center', minWidth: '100%', paddingHorizontal: 24 }}
+        >
           
           {/* Faturamento do Mês */}
-          <Card className="w-40 mr-4 bg-brand-primary p-5 border-transparent shadow-lg shadow-brand-primary/20">
+          <Card className="w-40 bg-brand-primary p-5 border-transparent shadow-lg shadow-brand-primary/20">
             <DollarSign color="white" size={24} />
             <Typography variant="caption" className="text-white/70 text-xs mt-3">Receita do Mês</Typography>
             <Typography variant="h2" className="text-white font-bold text-lg mt-0.5">R$ {monthEarnings.toFixed(0)}</Typography>
           </Card>
 
           {/* Consultas de Hoje */}
-          <Card className="w-40 mr-4 p-5">
+          <Card className="w-40 p-5">
             <Calendar color="#4F46E5" size={24} />
             <Typography variant="caption" color="subtext" className="text-xs mt-3">Sessões de Hoje</Typography>
             <Typography variant="h2" className="font-bold text-lg mt-0.5">{todayAppointments.length} agendadas</Typography>
@@ -65,7 +70,7 @@ export const TherapistDashboardScreen: React.FC<{ navigation: any }> = ({ naviga
         </ScrollView>
 
         {/* Agenda de Hoje */}
-        <View className="flex-row justify-between items-center mb-4">
+        <View className="flex-row justify-between items-center mt-6 mb-5">
           <Typography variant="h2">Agenda de Hoje</Typography>
           <TouchableOpacity onPress={() => navigation.navigate('TherapistAgenda')}>
             <Typography variant="captionBold" color="secondary">Ver Completa</Typography>

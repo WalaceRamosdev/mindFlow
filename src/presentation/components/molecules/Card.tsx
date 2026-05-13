@@ -7,11 +7,12 @@ interface CardProps {
   onPress?: () => void;
   className?: string;
   elevation?: number;
+  themeOverride?: 'dark' | 'light';
 }
 
-export const Card: React.FC<CardProps> = ({ children, onPress, className = '', elevation = 4 }) => {
+export const Card: React.FC<CardProps> = ({ children, onPress, className = '', elevation = 4, themeOverride }) => {
   const { theme } = useThemeStore();
-  const isDark = theme === 'dark';
+  const isDark = themeOverride ? themeOverride === 'dark' : theme === 'dark';
 
   const baseClasses = `rounded-3xl p-5 border transition-all ${
     isDark

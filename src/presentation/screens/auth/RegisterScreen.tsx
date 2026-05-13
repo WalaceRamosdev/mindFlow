@@ -51,8 +51,8 @@ export const RegisterScreen: React.FC<{ route: any; navigation: any }> = ({ rout
   };
 
   return (
-    <SafeAreaView className="flex-1 bg-brand-darkBg px-6">
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
+    <SafeAreaView className="flex-1 bg-brand-darkBg">
+      <ScrollView showsVerticalScrollIndicator={false} className="px-6" contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}>
         
         {/* Header */}
         <View className="mb-8 items-start">
