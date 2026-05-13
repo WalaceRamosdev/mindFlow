@@ -1,0 +1,58 @@
+{
+  "expo": {
+    "name": "MindFlow",
+    "slug": "mindflow-psychology",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#111827"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mindflow.psychology",
+      "infoPlist": {
+        "NSCalendarsUsageDescription": "Este aplicativo necessita de acesso ao seu calendário para sincronizar as consultas de psicologia.",
+        "NSCameraUsageDescription": "Este aplicativo necessita de acesso à câmera para realizar videochamadas entre psicólogos e pacientes.",
+        "NSMicrophoneUsageDescription": "Este aplicativo necessita de acesso ao microfone para permitir conversas por voz durante videochamadas e mensagens de áudio.",
+        "NSFaceIDUsageDescription": "Este aplicativo utiliza biometria para fornecer autenticação segura e rápida nas áreas clínicas."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#111827"
+      },
+      "package": "com.mindflow.psychology",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO",
+        "android.permission.READ_CALENDAR",
+        "android.permission.WRITE_CALENDAR",
+        "android.permission.USE_BIOMETRIC"
+      ]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    },
+    "scheme": "mindflow",
+    "plugins": [
+      [
+        "expo-calendar",
+        {
+          "calendarPermission": "O aplicativo precisa de permissão para ler e gravar suas consultas no calendário principal."
+        }
+      ],
+      "expo-secure-store"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "44c489f5-2d04-4ad8-988a-2e2cac8f2f1a"
+      }
+    },
+    "owner": "walace_ramos"
+  }
+}
