@@ -91,38 +91,43 @@ export const PatientSearchScreen: React.FC<{ navigation: any }> = ({ navigation 
             renderItem={({ item }) => (
               <Card
                 onPress={() => navigation.navigate('TherapistProfile', { therapistId: item.id })}
-                className="mb-4 flex-row p-4"
+                className="p-5 flex-row items-center justify-between border border-slate-150 dark:border-slate-800 mb-5"
               >
-                <Avatar source={item.user?.avatarUrl} size="md" />
-
-                <View className="flex-1 pl-4 justify-between">
+                {/* Bloco de Informações na Esquerda */}
+                <View className="flex-1 pr-4 justify-between">
                   <View>
-                    <View className="flex-row items-center">
-                      <Typography variant="h3" className="text-base font-semibold mr-1.5">
-                        {item.user?.fullName}
-                      </Typography>
-                      {item.isApproved && <ShieldCheck color="#0D9488" size={16} />}
+                    <View className="flex-row items-center justify-between">
+                      <View className="flex-row items-center">
+                        <Typography variant="h3" className="text-base font-bold mr-1.5">
+                          {item.user?.fullName}
+                        </Typography>
+                        {item.isApproved && <ShieldCheck color="#0D9488" size={16} />}
+                      </View>
                     </View>
-                    <Typography variant="caption" color="subtext" className="mt-0.5">
+                    <Typography variant="caption" color="subtext" className="text-xs mt-1">
                       {item.crp} • {item.specialties[0]}
                     </Typography>
                   </View>
 
-                  <View className="flex-row justify-between items-center mt-3">
+                  {/* Métricas e Preço na Esquerda (Logo abaixo do Nome/Especialidades) */}
+                  <View className="flex-row justify-between items-center mt-4">
                     <View className="flex-row items-center">
-                      <Star color="#F59E0B" size={14} fill="#F59E0B" />
-                      <Typography variant="captionBold" className="ml-1 text-sm">
+                      <Star color="#F59E0B" size={13} fill="#F59E0B" />
+                      <Typography variant="captionBold" className="ml-1 text-xs font-semibold">
                         {item.rating.toFixed(1)}
                       </Typography>
-                      <Typography variant="caption" color="subtext" className="ml-1">
+                      <Typography variant="caption" color="subtext" className="ml-1.5 text-xs">
                         ({item.yearsOfExperience} anos exp)
                       </Typography>
                     </View>
-                    <Typography variant="bodyBold" color="primary">
+                    <Typography variant="bodyBold" color="primary" className="text-xs font-bold">
                       R$ {item.pricePerSession.toFixed(0)}/sessão
                     </Typography>
                   </View>
                 </View>
+
+                {/* Avatar na Extrema Direita (Space-Between) */}
+                <Avatar source={item.user?.avatarUrl} size="md" className="self-auto" />
               </Card>
             )}
           />
