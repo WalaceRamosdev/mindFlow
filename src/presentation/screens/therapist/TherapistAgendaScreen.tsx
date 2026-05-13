@@ -78,15 +78,15 @@ export const TherapistAgendaScreen: React.FC = () => {
         </View>
 
         {/* Escolher Dia */}
-        <View className="mb-6 h-18">
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        <View className="mb-6">
+          <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
             {DAYS.map((day) => {
               const isSelected = selectedDay.date === day.date;
               return (
                 <TouchableOpacity
                   key={day.date}
                   onPress={() => setSelectedDay(day)}
-                  className={`w-14 h-16 rounded-2xl items-center justify-center mr-3 border transition-all
+                  className={`w-14 h-16 rounded-2xl items-center justify-center border transition-all
                     ${isSelected ? 'bg-brand-secondary border-brand-secondary' : isDark ? 'bg-brand-darkSurface border-slate-800' : 'bg-white border-slate-200'}
                   `}
                 >
@@ -99,7 +99,7 @@ export const TherapistAgendaScreen: React.FC = () => {
                 </TouchableOpacity>
               );
             })}
-          </ScrollView>
+          </View>
         </View>
 
         {/* Listagem de Horários */}
@@ -111,36 +111,53 @@ export const TherapistAgendaScreen: React.FC = () => {
               const isBlocked = slot.status === 'blocked';
               
               return (
-                <Card
+                <TouchableOpacity
                   key={slot.id}
                   onPress={() => handleToggleSlot(slot.id, slot.status)}
-                  className={`flex-row justify-between items-center p-4.5 border-l-4
-                    ${isBooked ? 'border-l-brand-success bg-brand-success/5' : isBlocked ? 'border-l-slate-500 bg-slate-500/5 opacity-60' : 'border-l-brand-secondary bg-brand-secondary/5'}
+                  activeOpacity={0.7}
+                  className={`flex-row justify-between items-center py-3 px-5 rounded-2xl border transition-all
+                    ${isBooked ? (isDark ? 'bg-brand-success/5 border-brand-success/20' : 'bg-brand-success/5 border-brand-success/15') :
+                      isBlocked ? (isDark ? 'bg-slate-900/40 border-slate-900/40 opacity-50' : 'bg-slate-50 border-slate-100 opacity-60') :
+                      (isDark ? 'bg-brand-darkSurface border-slate-800/80' : 'bg-white border-slate-200/60')
+                    }
                   `}
                 >
-                  <View className="flex-row items-center">
-                    <Clock color={isBooked ? '#10B981' : isBlocked ? '#94A3B8' : '#4F46E5'} size={20} />
-                    <View className="pl-4">
-                      <Typography variant="bodyBold" className="text-base">{slot.time}</Typography>
-                      <Typography variant="caption" color="subtext" className="mt-0.5">
-                        {isBooked ? `Consulta • ${slot.patient}` : isBlocked ? 'Horário Bloqueado' : 'Disponível para Agendamento'}
+                  <View className="flex-row items-center flex-1">
+                    {/* Coluna Horário */}
+                    <View className="w-14">
+                      <Typography variant="bodyBold" className={`text-base ${isBooked ? 'text-brand-success' : isBlocked ? 'text-slate-400' : 'text-brand-secondary'}`}>
+                        {slot.time}
+                      </Typography>
+                    </View>
+ 
+                    {/* Barra de Status Indicadora */}
+                    <View className="mr-4">
+                      <View className={`w-1 h-5 rounded-full
+                        ${isBooked ? 'bg-brand-success' : isBlocked ? 'bg-slate-400' : 'bg-brand-secondary'}
+                      `} />
+                    </View>
+ 
+                    {/* Detalhes */}
+                    <View className="flex-1">
+                      <Typography variant="bodyBold" className={`text-[14px] ${isBlocked ? 'text-slate-400 font-normal' : ''}`}>
+                        {isBooked ? slot.patient : isBlocked ? 'Horário Bloqueado' : 'Horário Livre'}
+                      </Typography>
+                      <Typography variant="caption" color="subtext" className="text-[11px] mt-0.5">
+                        {isBooked ? 'Consulta por vídeo' : isBlocked ? 'Bloqueado para agendamentos' : 'Disponível para agenda'}
                       </Typography>
                     </View>
                   </View>
-
-                  <View>
+ 
+                  <View className="pl-4">
                     {isBooked ? (
-                      <Badge label="Reservado" variant="success" />
+                      <ShieldCheck color="#10B981" size={18} />
                     ) : isBlocked ? (
-                      <View className="flex-row items-center">
-                        <Lock color="#94A3B8" size={14} />
-                        <Typography variant="captionBold" color="subtext" className="ml-1 text-xs">Bloqueado</Typography>
-                      </View>
+                      <Lock color="#94A3B8" size={15} />
                     ) : (
-                      <Badge label="Livre" variant="secondary" />
+                      <Plus color="#4F46E5" size={16} />
                     )}
                   </View>
-                </Card>
+                </TouchableOpacity>
               );
             })}
           </View>
