@@ -76,7 +76,7 @@ export const LoginScreen: React.FC<{ route: any; navigation: any }> = ({ route, 
         </View>
 
         {/* Campos do Formulário */}
-        <View className="space-y-4">
+        <View className="flex-col gap-4">
           <Input
             label="Seu E-mail"
             placeholder="Ex: gabriel@email.com"
@@ -113,7 +113,7 @@ export const LoginScreen: React.FC<{ route: any; navigation: any }> = ({ route, 
         </TouchableOpacity>
 
         {/* Botões de Ação */}
-        <View className="space-y-4">
+        <View className="flex-col gap-4">
           <Button
             title="Entrar"
             onPress={handleLogin}

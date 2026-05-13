@@ -17,7 +17,7 @@ export const ProfileSelectionScreen: React.FC<{ navigation: any }> = ({ navigati
         </Typography>
       </View>
 
-      <View className="space-y-6">
+      <View className="flex-col gap-6">
         {/* Opção Paciente */}
         <Card
           onPress={() => navigation.navigate('Login', { role: 'patient' })}
@@ -41,7 +41,7 @@ export const ProfileSelectionScreen: React.FC<{ navigation: any }> = ({ navigati
         {/* Opção Psicólogo */}
         <Card
           onPress={() => navigation.navigate('Login', { role: 'therapist' })}
-          className="border-2 border-brand-secondary/10 hover:border-brand-secondary p-6 mt-6"
+          className="border-2 border-brand-secondary/10 hover:border-brand-secondary p-6"
         >
           <View className="flex-row items-center space-x-5">
             <View className="w-16 h-16 bg-brand-secondary/20 rounded-2xl items-center justify-center">

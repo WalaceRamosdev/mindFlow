@@ -77,7 +77,7 @@ export const TherapistFinancialScreen: React.FC = () => {
 
         {/* Últimas Transações e Emissão de Recibo */}
         <Typography variant="h2" className="mb-4">Recebimentos e Recibos</Typography>
-        <View className="space-y-4 mb-10">
+        <View className="flex-col gap-4 mb-10">
           
           <Card className="flex-row justify-between items-center p-4">
             <View className="flex-row items-center">

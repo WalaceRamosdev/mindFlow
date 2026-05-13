@@ -73,7 +73,7 @@ export const TherapistDashboardScreen: React.FC<{ navigation: any }> = ({ naviga
         </View>
 
         {todayAppointments.length > 0 ? (
-          <View className="space-y-4 mb-10">
+          <View className="flex-col gap-4 mb-10">
             {todayAppointments.map((apt) => (
               <Card key={apt.id} className="p-4 flex-row items-center border-l-4 border-l-brand-secondary">
                 <Avatar source="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80" size="md" />

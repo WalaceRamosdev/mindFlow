@@ -103,7 +103,7 @@ export const PatientWalletScreen: React.FC = () => {
 
         {/* Histórico Financeiro */}
         <Typography variant="h2" className="mb-4">Histórico de Transações</Typography>
-        <View className="space-y-4 mb-10">
+        <View className="flex-col gap-4 mb-10">
           <Card className="flex-row justify-between items-center p-4">
             <View className="flex-row items-center">
               <View className="w-11 h-11 bg-brand-primary/10 rounded-2xl items-center justify-center mr-3.5">

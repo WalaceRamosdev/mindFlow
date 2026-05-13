@@ -65,7 +65,7 @@ export const RegisterScreen: React.FC<{ route: any; navigation: any }> = ({ rout
         </View>
 
         {/* Formulário */}
-        <View className="space-y-4">
+        <View className="flex-col gap-4">
           <Input
             label="Nome Completo"
             placeholder="Ex: Gabriel Vasconcelos"

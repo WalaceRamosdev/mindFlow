@@ -112,7 +112,7 @@ export const PatientHomeScreen: React.FC<{ navigation: any }> = ({ navigation })
           </TouchableOpacity>
         </View>
 
-        <View className="space-y-4 mb-10">
+        <View className="flex-col gap-4 mb-10">
           {therapists.slice(0, 2).map((therapist) => (
             <Card
               key={therapist.id}

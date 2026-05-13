@@ -105,7 +105,7 @@ export const TherapistAgendaScreen: React.FC = () => {
         {/* Listagem de Horários */}
         <Typography variant="h2" className="mb-4">Horários do Dia</Typography>
         <ScrollView showsVerticalScrollIndicator={false} className="flex-1 mb-6">
-          <View className="space-y-4">
+          <View className="flex-col gap-4">
             {slots.map((slot) => {
               const isBooked = slot.status === 'booked';
               const isBlocked = slot.status === 'blocked';
