@@ -58,7 +58,7 @@ export const TherapistFinancialScreen: React.FC = () => {
               Painel Geral
             </Typography>
             <Typography variant="h1" className="text-3xl font-extrabold mt-1 text-center">
-              Olá, Dr(a). {user?.name?.split(' ')[0] || 'Profissional'}
+              Olá, Dr(a). {user?.fullName?.split(' ')[0] || 'Profissional'}
             </Typography>
             
             {/* Seletor de Período Premium Centrado */}

@@ -39,18 +39,23 @@ export const PatientSettingsScreen: React.FC = () => {
 
   return (
     <SafeAreaView className={`flex-1 ${isDark ? 'bg-brand-darkBg' : 'bg-brand-lightBg'}`}>
-      <ScrollView showsVerticalScrollIndicator={false} className="px-6 pt-6">
+      
+      {/* Corpo principal rolável de Ajustes */}
+      <ScrollView showsVerticalScrollIndicator={false} className="px-6 pt-6 flex-1">
         
         {/* Header */}
         <Typography variant="h1" className="text-2xl mb-8">Configurações</Typography>
 
-        {/* Detalhes de Perfil */}
-        <Card className="flex-row items-center p-5 mb-8">
-          <Avatar source={user?.avatarUrl} size="lg" />
-          <View className="flex-1 pl-4">
-            <Typography variant="h2" className="text-lg">{user?.fullName}</Typography>
-            <Typography variant="caption" color="subtext" className="text-sm mt-0.5">{user?.email}</Typography>
-            <Typography variant="captionBold" color="primary" className="text-xs uppercase mt-2 tracking-wider">
+        {/* Detalhes de Perfil: Avatar no topo centralizado e informações centralizadas logo abaixo */}
+        <Card elevation={0} className={`flex-col items-center justify-center p-6 mb-8 border ${
+          isDark ? 'border-slate-800 bg-slate-900/20' : 'border-slate-150 bg-slate-50/30'
+        }`}>
+          <Avatar source={user?.avatarUrl} size="lg" className="self-center mb-4.5" />
+          
+          <View className="items-center justify-center">
+            <Typography variant="h2" className="text-xl font-bold text-center">{user?.fullName}</Typography>
+            <Typography variant="caption" color="subtext" className="text-sm mt-1 text-center">{user?.email}</Typography>
+            <Typography variant="captionBold" color="primary" className="text-xs uppercase mt-3.5 tracking-wider bg-brand-primary/10 px-4 py-1.5 rounded-full text-center">
               {user?.role === 'patient' ? 'Paciente Verificado' : 'Profissional Clínico'}
             </Typography>
           </View>
@@ -58,7 +63,7 @@ export const PatientSettingsScreen: React.FC = () => {
 
         {/* Preferências do Aplicativo */}
         <Typography variant="h2" className="mb-4">Preferências</Typography>
-        <Card className="mb-8 p-0 overflow-hidden">
+        <Card elevation={0} className="mb-8 p-0 overflow-hidden">
           {/* Modo Escuro */}
           <View className="flex-row items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
             <View className="flex-row items-center">
@@ -119,7 +124,7 @@ export const PatientSettingsScreen: React.FC = () => {
 
         {/* Suporte e Ajuda */}
         <Typography variant="h2" className="mb-4">Segurança & Termos</Typography>
-        <Card className="mb-8 p-0 overflow-hidden">
+        <Card elevation={0} className="mb-10 p-0 overflow-hidden">
           <TouchableOpacity className="flex-row items-center justify-between p-5 border-b border-slate-100 dark:border-slate-800">
             <View className="flex-row items-center">
               <View className="w-10 h-10 bg-brand-primary/10 rounded-2xl items-center justify-center mr-4">
@@ -141,18 +146,22 @@ export const PatientSettingsScreen: React.FC = () => {
           </TouchableOpacity>
         </Card>
 
-        {/* Botão de Logout */}
+      </ScrollView>
+
+      {/* Botão de Logout: Fixado na extrema base da viewport, fora do ScrollView para máximo destaque */}
+      <View className="px-6 pb-6 pt-2">
         <TouchableOpacity
           onPress={handleLogout}
-          className="flex-row items-center justify-center bg-brand-danger/10 py-5 rounded-3xl border border-brand-danger/20 mb-14"
+          activeOpacity={0.8}
+          className="flex-row items-center justify-center bg-brand-danger/10 py-4 rounded-3xl border border-brand-danger/20"
         >
           <LogOut color="#EF4444" size={20} />
-          <Typography variant="bodyBold" color="danger" className="pl-2 text-sm">
+          <Typography variant="bodyBold" color="danger" className="pl-2.5 text-sm">
             Sair do Aplicativo
           </Typography>
         </TouchableOpacity>
+      </View>
 
-      </ScrollView>
     </SafeAreaView>
   );
 };

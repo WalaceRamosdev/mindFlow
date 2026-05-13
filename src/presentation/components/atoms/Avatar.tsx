@@ -25,11 +25,14 @@ export const Avatar: React.FC<AvatarProps> = ({ source, size = 'md', isOnline = 
 
   const fallbackUrl = 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&w=150&q=80';
 
+  // Se a classe passada contiver uma especificação de 'self-', usamos ela; caso contrário, mantemos 'self-center' por compatibilidade
+  const alignClass = className.includes('self-') ? '' : 'self-center';
+
   return (
-    <View className="relative self-center">
+    <View className={`relative ${alignClass} ${className}`}>
       <Image
         source={{ uri: source || fallbackUrl }}
-        className={`${sizeClasses[size]} bg-slate-200 ${className}`}
+        className={`${sizeClasses[size]} bg-slate-200`}
       />
       {isOnline && (
         <View
